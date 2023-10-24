@@ -5,24 +5,33 @@ import Pig from "./Pig";
 
 function PigsDisplay({ hogs }) {
     const [checked, setChecked] = useState(false)
+    const [sortingSelection, setSortingSelection] = useState("unsorted")
 
     function handleGreasedChange(e) {
         setChecked(e.target.checked)
     }
 
-    const hogsToDisplay = hogs.filter((hog) => {
+    function handleSortingSelection(e) {
+        setSortingSelection(e.target.value)
+    }
+
+    const filteredHogs = hogs.filter((hog) => {
         if (checked === true) return hog.greased === true;
         if (checked === false) return hog;
+    })
+
+    const sortedHogs = filteredHogs.map((hog) => {
+        if (sortingSelection === "unsorted") return hog;
     })
 
     return (
         <div>
             <div className="display mods">
                 <GreaseFilter onGreasedFilterChange={handleGreasedChange} />
-                {/* <Sort /> */}
+                <Sort onSortingSelection={handleSortingSelection}/>
             </div>
             <div className="ui link cards">
-                {hogsToDisplay.map((hog) => (
+                {sortedHogs.map((hog) => (
                     <Pig 
                         name={hog.name} 
                         image={hog.image} 

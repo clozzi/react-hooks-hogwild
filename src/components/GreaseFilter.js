@@ -4,7 +4,7 @@ function GreaseFilter({ onGreasedFilterChange }) {
 
     return (
     <form>
-        <label htmlFor="greased">Greased? </label>
+        <h3>Greased? </h3>
         <input type="checkbox" onChange={onGreasedFilterChange}></input>
     </form>
     )

@@ -1,8 +1,14 @@
 import React from "react";
 
-function Sort() {
+function Sort({ onSortingSelection }) {
     return (
-    console.log("hi from sort")
+    <div>
+        <select value="sort" onChange={onSortingSelection}>
+            <option value="unsorted">Unsorted</option>
+            <option value="by name">Sort by Name</option>
+            <option value="by weight">Sort by Weight</option>
+        </select>
+    </div>
     )
 }
 
